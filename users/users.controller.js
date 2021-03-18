@@ -1,4 +1,5 @@
 const User = require('./user.model');
+const mongoose = require('mongoose');
 
 
 const getUsers = async (req, res) => {
@@ -13,6 +14,8 @@ const getUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
     const user = new User(req.body);
+    const id = mongoose.Types.ObjectId();
+    user._id = id;
     try {
         const response = await user.save();
         res.send(response);
@@ -24,7 +27,6 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     const id = req.params.id;
-    const user = new User(req.body);
     try {
         const response = await User.findOneAndUpdate({_id: id}, req.body, {
             new: true

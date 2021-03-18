@@ -23,7 +23,7 @@ var server = http.createServer(app);
  */
 
 
-const dbURI =
+const dbURI = "mongodb+srv://thenetninja:D12345@nodetuts.9ud37.mongodb.net/notetuts?retryWrites=true&w=majority";
 
 
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
